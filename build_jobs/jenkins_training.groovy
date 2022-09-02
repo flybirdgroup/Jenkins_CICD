@@ -6,7 +6,7 @@ pipeline {
     }
     parameters {
         string description: 'version to deploy on dev', name: 'Version'
-        choice choices: ['[\'1.1\',\'1.2\',\'1.3\']'], name: 'Version'
+        choice choices: ['1.1','1.2','1.3'], name: 'Version'
         booleanParam defaultValue: true, name: 'executeTests'
     }
 
