@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        NEW_VERSION = '1.3.0'
+    }
+
     // tools {
     //     // Install the Maven version configured as "M3" and add it to the path.
     //     maven "M3"
@@ -32,6 +36,10 @@ pipeline {
         stage("deploy") {
                 steps{
                     sh "echo deploy stage"
+                    withCredentials([gitUsernamePassword(credentialsId: 'd8847954-6db5-47e0-81b7-33febc3c8881', gitToolName: 'Default')]) 
+                    { 
+                        sh "echo ${gitToolName}"
+                     }
                 }
             }
         }
