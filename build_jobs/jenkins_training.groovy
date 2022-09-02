@@ -22,7 +22,7 @@ pipeline {
         stage('test') {
             when {
                 expression {
-                    env.BRANCH_NAME == 'dev' || env.BRANCH_NAME == 'main'
+                    env.BRANCH_NAME == 'main' || env.BRANCH_NAME == 'dev'
                 }
             }
             steps {
@@ -31,7 +31,7 @@ pipeline {
         }
         stage("deploy") {
                 steps{
-                    sh "deploy stage"
+                    sh "echo deploy stage"
                 }
             }
         }
