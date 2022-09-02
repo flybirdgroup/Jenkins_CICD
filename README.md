@@ -21,3 +21,8 @@ docker run -d -p 10240:8080 -p 10241:50000 -v /Users/flybird/Desktop/ANSIBLE/Jen
 　　--name myjenkins 给容器起一个别名
 
 """
+
+### Knowledge
+1. check env variable: [url]http://127.0.0.1:10240/env-vars.html/
+
+2. credential link to github: https://www.youtube.com/watch?v=HSA_mZoADSw
