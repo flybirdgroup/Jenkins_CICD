@@ -40,16 +40,16 @@ pipeline {
                 expression {
                     params.executeTests
                 }
-                steps{
-                    echo " deploy stage"
-                    withCredentials([gitUsernamePassword(credentialsId: 'd8847954-6db5-47e0-81b7-33febc3c8881', gitToolName: 'Default')]) 
-                    { 
-                        echo " deploying ${params.executeTests}"
-                     }
-                }
-            }
-        }
-    } 
+             }
+            steps{
+                echo " deploying ${params.executeTests}"
+                // withCredentials([gitUsernamePassword(credentialsId: 'd8847954-6db5-47e0-81b7-33febc3c8881', gitToolName: 'Default')]) 
+                // { 
+                //     echo " deploying ${params.executeTests}"
+                //     }
+            // }
+                 }        
+        } 
     post {
     always {
        script {
