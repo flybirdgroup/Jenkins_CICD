@@ -34,11 +34,11 @@ pipeline {
                     sh "deploy stage"
                 }
             }
-
-            post {
-                success {
-                    sh "echo done"
-                }
+        }
+        
+        post {
+            success {
+                sh "echo done"
             }
         }
 }
