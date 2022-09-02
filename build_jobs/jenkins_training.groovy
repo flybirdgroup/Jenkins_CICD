@@ -48,13 +48,14 @@ pipeline {
         
     post {
     always {
-       sh "echo One or more steps need to be included within each condition's block."
+       script {
+            sh "echo One or more steps need to be included within each condition's block."
+        }     
     }
     aborted {
-       sh " echo One or more steps need to be included within each condition's block."
-    }
-    failure {
-        sh " echo One or more steps need to be included within each condition's block."
+       script {
+            sh " echo One or more steps need to be included within each condition's block."
+       }
     }
     }
 }
