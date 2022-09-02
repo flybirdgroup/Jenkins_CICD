@@ -36,6 +36,10 @@ pipeline {
             }
         }
         stage("deploy") {
+             when {
+                expression {
+                    params.executeTests
+                }
                 steps{
                     sh "echo deploy stage"
                     withCredentials([gitUsernamePassword(credentialsId: 'd8847954-6db5-47e0-81b7-33febc3c8881', gitToolName: 'Default')]) 
