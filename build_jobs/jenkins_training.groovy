@@ -4,11 +4,13 @@ pipeline {
     environment {
         NEW_VERSION = '1.3.0'
     }
+    parameters {
+        string description: 'version to deploy on dev', name: 'Version'
+        choice choices: ['[\'1.1\',\'1.2\',\'1.3\']'], name: 'Version'
+        booleanParam defaultValue: true, name: 'executeTests'
+    }
 
-    // tools {
-    //     // Install the Maven version configured as "M3" and add it to the path.
-    //     maven "M3"
-    // }
+
 
     stages {
         stage('Build') {
@@ -44,9 +46,15 @@ pipeline {
             }
         }
         
-        post {
-            success {
-                sh "echo done"
-            }
-        }
+    post {
+    always {
+       sh "echo One or more steps need to be included within each condition's block."
+    }
+    aborted {
+       sh " echo One or more steps need to be included within each condition's block."
+    }
+    failure {
+        sh " echo One or more steps need to be included within each condition's block."
+    }
+    }
 }
