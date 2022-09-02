@@ -38,7 +38,7 @@ pipeline {
                     sh "echo deploy stage"
                     withCredentials([gitUsernamePassword(credentialsId: 'd8847954-6db5-47e0-81b7-33febc3c8881', gitToolName: 'Default')]) 
                     { 
-                        sh "echo ${gitToolName}"
+                        sh "echo gitToolName"
                      }
                 }
             }
