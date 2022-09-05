@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools {
+        
+    }
 
     environment {
         NEW_VERSION = '1.3.0'
@@ -58,7 +61,7 @@ pipeline {
     post {
     always {
        script {
-            sh "echo One or more steps need to be included within each condition's block."
+            echo " One or more steps need to be included within each condition's block."
         }     
     }
     // aborted {
