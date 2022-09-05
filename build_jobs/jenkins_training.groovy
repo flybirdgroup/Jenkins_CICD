@@ -10,8 +10,6 @@ pipeline {
         booleanParam defaultValue: true, name: 'executeTests'
     }
 
-
-
     stages {
         stage('Initializing Stage') {
             steps {
