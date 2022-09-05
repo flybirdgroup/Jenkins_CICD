@@ -43,6 +43,13 @@ pipeline {
                     params.executeTests
                 }
              }
+             input {
+                message "Select the environment to deploy to"
+                ok "done"
+                parameters {
+                    choice choices: ['Prod','Staging','Dev'], name: 'Proj_Env'
+                }
+             }
             steps{
                 script{                    
                 withCredentials([usernamePassword(credentialsId: 'd8847954-6db5-47e0-81b7-33febc3c8881', passwordVariable: 'password', usernameVariable: 'username')]) 
@@ -51,6 +58,7 @@ pipeline {
                         sh "echo ${password}"
                     }
                 gv.deployApp()
+                echo "Deploying to ${Proj_Env}"
                 }
                  }        
         }
