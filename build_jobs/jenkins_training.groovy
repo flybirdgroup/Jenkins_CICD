@@ -43,6 +43,10 @@ pipeline {
              }
             steps{
                 echo " deploying ${params.executeTests}"
+                withCredentials([usernamePassword(credentialsId: 'd8847954-6db5-47e0-81b7-33febc3c8881', passwordVariable: 'password', usernameVariable: 'username')]) {
+                        sh "echo ${username}"
+                        sh "echo ${password}"
+                    }
                 // withCredentials([gitUsernamePassword(credentialsId: 'd8847954-6db5-47e0-81b7-33febc3c8881', gitToolName: 'Default')]) 
                 // { 
                 //     echo " deploying ${params.executeTests}"
@@ -57,10 +61,10 @@ pipeline {
             sh "echo One or more steps need to be included within each condition's block."
         }     
     }
-    aborted {
-       script {
-            sh " echo One or more steps need to be included within each condition's block."
-       }
-    }
+    // aborted {
+    //    script {
+    //         sh " echo One or more steps need to be included within each condition's block."
+    //    }
+    // }
     }
 }

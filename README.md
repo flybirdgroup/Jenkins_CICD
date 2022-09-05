@@ -28,3 +28,4 @@ docker run -d -p 10240:8080 -p 10241:50000 -v /Users/flybird/Desktop/ANSIBLE/Jen
 2. credential link to github: https://www.youtube.com/watch?v=HSA_mZoADSw
 
 3. webhook + ngox: https://www.youtube.com/watch?v=odRxOMUZ6Ts
+
