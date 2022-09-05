@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        
+
     }
 
     environment {
@@ -16,45 +16,45 @@ pipeline {
 
 
     stages {
-        stage('Build') {
+        stage('Initializing Stage') {
             steps {
-                // Get some code from a GitHub repository
-                // git 'https://github.com/jglick/simple-maven-project-with-tests.git'
-
-                // Run Maven on a Unix agent.
-                sh "echo hello"
-
-                // To run Maven on a Windows agent, use
-                // bat "mvn -Dmaven.test.failure.ignore=true clean package"
+                script {
+                    gv = load "script.groovy" 
+                }
             } 
             }
-        stage('test') {
+        stage('Build Stage') {
+            steps {
+                script {
+                    gv.buildApp()
+                }
+            } 
+            }
+        stage('Test Stage') {
             when {
                 expression {
                     env.BRANCH_NAME == 'main'
                 }
             }
             steps {
-                sh "echo test stage"
+                gv.testApp()
             }
         }
-        stage("deploy") {
+        stage("deploy Stage") {
              when {
                 expression {
                     params.executeTests
                 }
              }
             steps{
-                echo " deploying ${params.executeTests}"
-                withCredentials([usernamePassword(credentialsId: 'd8847954-6db5-47e0-81b7-33febc3c8881', passwordVariable: 'password', usernameVariable: 'username')]) {
+                script{                    
+                withCredentials([usernamePassword(credentialsId: 'd8847954-6db5-47e0-81b7-33febc3c8881', passwordVariable: 'password', usernameVariable: 'username')]) 
+                {
                         sh "echo ${username}"
                         sh "echo ${password}"
                     }
-                // withCredentials([gitUsernamePassword(credentialsId: 'd8847954-6db5-47e0-81b7-33febc3c8881', gitToolName: 'Default')]) 
-                // { 
-                //     echo " deploying ${params.executeTests}"
-                //     }
-            // }
+                gv.deployApp()
+                }
                  }        
         }
     } 
